@@ -1,0 +1,30 @@
+장고 install
+	명령어 : pip install django
+
+장고 프로젝트 생성
+	명령어 : django-admin startproject 프로젝트이름 .
+
+장고 슈퍼유저 생성
+	명령어 : python manage.py createsuperuser
+
+장고 서버 실행
+	명령어 : python manage.py runserver
+
+가상환경 설정
+	1. File → Porject : 프로젝트 이름 → Python Interpreter
+	2. 톱니바퀴 클릭 → Add → OK → Apply → OK
+
+app 생성
+	1. app을 생성하면 settings.py에서 INSTALLED_APPS에 만든 앱을 등록해준다.
+	
+
+model 생성
+	1. model을 새로 생성하거나 수정하면 model에 변경사항이 생겼다고 장고에게 알려줘야한다.
+	   명령어 : python manage.py makemigrations
+	2. 그리고 그 반영사항들을 DB에 등록해야 한다.
+	   명령어 : python manage.py migrate
+
+생성한 model을 장고 관리자 웹 페이지에 추가하기
+	1. venv폴더 아래 manage.py파일로 이동
+	2. 코드추가 : from .models import 모델이름 
+	3. 코드추가 : admin.site.register( 모델이름 )
