@@ -37,3 +37,14 @@ Django Shell 사용하기.
 	3. Post.objects.all() → Post라는 객체로 생성된 모든 오브젝트 출력
 	4. Post.objects.first() → Post라는 객체로 생성된 애들중에 첫 번째 오브젝트 
 	5. Post.objects.last() → Post라는 객체로 생성된 애들중에 마지막 오브젝트
+
+
+앱 폴더 안에서 templates 폴더 만들고 view만들 때 주의
+	1. 각 앱에 templates 폴더를 만들되 그 하위폴더로 해당 앱의 폴더를
+	   만들어서 그 아래 view가 될 파일들을 만들어야 한다.
+	   이유는 장고는 templates폴더는 모두 하나로 보기 때문에 그 안에서
+           	   .html파일이나 다른 파일들이 겹칠 수 있기 때문이다.
+ 	   예시로 blog/templates/index.html과 single_pages/templates/index.html
+	   과 같이 만들다면 충돌이 발생한다.
+	   그래서 blog/templates/blog/index.html과 single_pages/templates/single_pages/index.html
+	   과 같은 형식으로 만들어야 한다.
