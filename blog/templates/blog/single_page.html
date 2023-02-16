@@ -5,15 +5,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blog</title>
+    <title>{{ post.title }} - Blog</title>
 </head>
-    <h1>Blog</h1>
+<body>
+    <nav>
+        <a href="/blog/">Blog</a>
+    </nav>
 
-    {% for p in posts %}
-        <hr>
-        <h3><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
-        <h5>{{ p.created_at }}</h5>
-        <p>{{ p.content }}</p>
-    {% endfor %}
+    <h1>{{ post.title }}</h1>
+    <h4>{{ post.created_at }}</h4>
+    <p>{{ post.content }}</p>
+
+    <hr/>
+
+    <h3>여기에 댓글이 들얼 수 있겠죠?</h3>
+
 </body>
 </html>

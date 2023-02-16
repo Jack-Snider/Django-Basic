@@ -18,3 +18,7 @@ class Post( models.Model ):
 
         # 따로 pk값을 설정하지 않았지만 장고에서 Object가 생성되면 pk를 자동으로 생성해준다.
         return f'[{self.pk}] {self.title}'
+
+    # 각 객체의 고유의 url을 만들기 위한 함수
+    def get_absolute_url( self ):
+        return f'/blog/{ self.pk }/'

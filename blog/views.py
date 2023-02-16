@@ -18,3 +18,15 @@ def index( request ):
             'posts': posts,
         }
     )
+
+def single_post_page( request, pk ):
+
+    post = Post.objects.get( pk = pk ) # Post객체중에 pk가 파라미터로 받은 pk인 객체를 가져와라.
+
+    return render(
+        request,
+        'blog/single_page.html',
+        {
+            'post':post,
+        }
+    )
