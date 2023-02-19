@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path( 'blog/', include( 'blog.urls' ) ), # blog url을 만나면 blog앱 안에 urls.py로 이동하라
     path('admin/', admin.site.urls),
+    path( '', include( 'single_pages.urls' ) )
 ]
