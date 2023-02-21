@@ -9,7 +9,8 @@
 </head>
     <h1>Blog</h1>
 
-    {% for p in posts %}
+    <!-- 모델명_list 로 하면 목록이 담긴 객체를 전달해줌 ( 장고에서 제공 ) -->
+    {% for p in post_list %}
         <hr>
         <h3><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
         <h5>{{ p.created_at }}</h5>
