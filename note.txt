@@ -48,3 +48,10 @@ Django Shell 사용하기.
 	   과 같이 만들다면 충돌이 발생한다.
 	   그래서 blog/templates/blog/index.html과 single_pages/templates/single_pages/index.html
 	   과 같은 형식으로 만들어야 한다.
+
+정적파일은 장고에서 static 폴더로 관리한다.
+	1) 앱 아래 static 폴더 생성
+	2) static 폴더 아래 해당 기능에 대한 이름으로 폴더 생성 ( 예시 : 부트스트랩을 사용할 목적이면 bootstrap )
+	3) html파일 doctype html 아래 {% load static %} 작성
+	4) 링크를 추가하고싶은 곳에 href="{% static 'blog/bootstrap/bootstrap.min.css' %}" 과 같이 작성
+	
