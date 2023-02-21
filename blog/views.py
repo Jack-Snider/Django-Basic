@@ -8,8 +8,8 @@ from django.views.generic import ListView, DetailView # 장고에서 제공하�
 class PostList( ListView ):
     model = Post
     #template_name = 'blog/index.html' # 템플릿을 지정해줌 ( 장고에서 제공 )
-    # 사실  html파일을 post_html과 같이 변경하면 template_name도 필요없음
-    ordering = '-pk'
+    # 사실  html파일을 post_list.html과 같이 클래스명을 스네이크 표기법으로 변경하면 template_name도 필요없음 ( 장고에서 제공 )
+    ordering = '-pk' # 객체 순서를 pk순서대로 하되 역방향으로 정렬 ( 장고에서 제공 )
 
 
 class PostDetail( DetailView ):

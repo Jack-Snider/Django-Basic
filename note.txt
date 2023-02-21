@@ -55,3 +55,8 @@ Django Shell 사용하기.
 	3) html파일 doctype html 아래 {% load static %} 작성
 	4) 링크를 추가하고싶은 곳에 href="{% static 'blog/bootstrap/bootstrap.min.css' %}" 과 같이 작성
 	
+CBV 종류 : https://wikidocs.net/9623
+CBV - ListView
+	1) 장고에서 모델이름_list 형태로 된 템플릿과 자동으로 매칭시켜준다.
+	2) html파일에서도 모델이름_list 의 이름으로 불러온 객체를 사용할 수 있다.
+	
