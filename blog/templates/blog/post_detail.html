@@ -53,7 +53,11 @@
                             </p>
                         </header>
                         <!-- Preview image figure-->
+                        {% if post.head_image %}
                         <figure class="mb-4"><img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.title }}" /></figure>
+                        {% else %}
+                        <figure class="mb-4"><img class="img-fluid rounded" src="https://picsum.photos/seed/{{ post.id }}/800/200" alt="{{ post.title }}" /></figure>
+                        {% endif %}
                         <!-- Post content-->
                         <section class="mb-5">
                             <p>{{ post.content }}</p>
