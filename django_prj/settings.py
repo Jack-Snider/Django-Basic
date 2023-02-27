@@ -125,8 +125,9 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+# 이미지를 추가하기 위해 설정하는 설정 MEDIA
 MEDIA_URL = '/media/' # 해당 url로 들어오면 media파일에 접근
-MEDIA_ROOT = os.path.join( BASE_DIR, '_media' )
+MEDIA_ROOT = os.path.join( BASE_DIR, '_media' ) # 이미지가 저장될 경로 설정
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
