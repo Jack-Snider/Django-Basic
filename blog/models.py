@@ -1,5 +1,5 @@
 from django.db import models
-
+import os
 # Create your models here.
 class Post( models.Model ):
     
@@ -26,3 +26,13 @@ class Post( models.Model ):
     # 각 객체의 고유의 url을 만들기 위한 함수
     def get_absolute_url( self ):
         return f'/blog/{ self.pk }/'
+    
+    # 장고에서 제공하지 않는 개발자가 직접 만든 함수
+    def get_file_name( self ):
+        # 객체의 파일명을 가져옴
+        return os.path.basename( self.file_upload.name )
+
+    # 장고에서 제공하지 않는 개발자가 직접 만든 함수
+    def get_file_ext(self):
+        # 객체의 파일명을 가져와 확장자를 리턴
+        return self.get_file_name().split( '.' )[ -1 ]

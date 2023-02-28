@@ -13,6 +13,10 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}">
 
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/400f2bffbc.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
         <!-- Custom styles for this template -->
         <link href = "{% static 'blog/css/blog-post.css' %}">
 
@@ -61,6 +65,32 @@
                         <!-- Post content-->
                         <section class="mb-5">
                             <p>{{ post.content }}</p>
+                            <hr>
+                            {% if post.file_upload %}
+                            <!--
+                                a태그의 속성중 download는 a태그를 클릭했을 때 파일을 다운로드 할 수 있게 해줌
+                                그리고 role은 어떤 형식으로 동작할건지에 대한 설정속성
+
+                                models.py에서 만든 get_file_name이라는 함수를 사용하는데 장고에서는 탬플릿에서
+                                함수를 사용할 때 ()를 사용할 수 없다!
+
+                            -->
+                            <a href="{{ post.file_upload.url }}" type="button" class="btn btn-dark" role="button" download>
+                                Download :
+                                {% if post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls' %}
+                                    <i class="fa-regular fa-file-excel"></i>
+                                {% elif post.get_file_ext == 'csv' %}
+                                    <i class="fa-solid fa-file-csv"></i>
+                                {% elif post.get_file_ext == 'docx' %}
+                                    <i class="fa-regular fa-file-word"></i>
+                                {% elif post.get_file_ext == 'pdf' %}
+                                    <i class="fa-regular fa-file-pdf"></i>
+                                {% else %}
+                                    <i class="fa-regular fa-file"></i>
+                                {% endif %}
+                                {{ post.get_file_name }}
+                            </a>
+                            {% endif %}
                         </section>
                     </article>
                     <!-- Comments section-->
