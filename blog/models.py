@@ -12,7 +12,7 @@ class Post( models.Model ):
     '''
     # blog/images/년/월/일 폴더에 저장 ( _media/blog/images/년/월/일/ 폴더에 저장, blank는 파일이 있어도, 없어도 된다.
     head_image = models.ImageField( upload_to='blog/images/%Y/%m/%d/', blank=True )
-    file_upload = models.FileField( upload_to='blog/files/%Y/%m/%d', blank=True )
+    file_upload = models.FileField( upload_to='blog/files/%Y/%m/%d', blank=True ) # file을 업로드 하기 위한 필드
 
     created_at = models.DateTimeField( auto_now_add = True ) # 작성 시간
     updated_at = models.DateTimeField( auto_now = True ) # 수정 시간  
