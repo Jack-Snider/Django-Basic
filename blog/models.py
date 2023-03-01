@@ -4,6 +4,7 @@ import os
 class Post( models.Model ):
     
     title = models.CharField( max_length = 50 ) # 게시물의 제목 , 최대 글자 50자
+    hook_text = models.CharField( max_length = 100, blank = True ) # 블로그 내용 요약을 위한 char필드
     content = models.TextField() # 게시물의 내용
 
     '''

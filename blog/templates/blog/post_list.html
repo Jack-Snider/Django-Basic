@@ -24,7 +24,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-              <a class="navbar-brand" href="./index.html">Do it Django</a>
+              <a class="navbar-brand" href="./index.html">Jack Snider</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -108,7 +108,15 @@
                             <div class="card-body">
                                 <div class="small text-muted">January 1, 2022</div>
                                     <h2 class="card-title h4">{{ p.title }}</h2>
-                                    <p class="card-text">{{ p.content }}</p>
+                                    {% if p.hook_text %}
+                                        <h5 class="text-muted">{{ p.hook_text }}</h5> <!-- text_muted는 텍스트를 흐릿하게 함 -->
+                                    {% endif %}
+
+                                    <!--
+                                        | truncatewords:45 → 45개의 단어만 짤라서 보여준다
+                                        | truncatechars:45 → 45개의 글자만 짤라서 보여준다
+                                    -->
+                                    <p class="card-text">{{ p.content | truncatewords:45 }}</p>
                                     <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
                             </div>
                             <div class = "card-footer text-muted">
