@@ -94,37 +94,41 @@
 
         <div class="container">
             <div class="row my-3">
-                <div class="col-md-8 col-lg-9"> <!--md일 때는 8, lg일 때는 9-->
+                <div class="col-md-8 col-lg-9" id = "main-area"> <!--md일 때는 8, lg일 때는 9-->
                     <h1>Blog</h1>
 
-                    {% for p in post_list %}
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        {% if p.head_image %}
-                            <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p.title }}" />
-                        {% else%}
-                            <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/600/200" alt="{{ p.title }}" />
-                        {% endif %}
-                            <div class="card-body">
-                                <div class="small text-muted">January 1, 2022</div>
-                                    <h2 class="card-title h4">{{ p.title }}</h2>
-                                    {% if p.hook_text %}
-                                        <h5 class="text-muted">{{ p.hook_text }}</h5> <!-- text_muted는 텍스트를 흐릿하게 함 -->
-                                    {% endif %}
+                    {% if post_list.exists %}
+                        {% for p in post_list %}
+                        <!-- Blog post-->
+                        <div class="card mb-4">
+                            {% if p.head_image %}
+                                <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p.title }}" />
+                            {% else%}
+                                <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/600/200" alt="{{ p.title }}" />
+                            {% endif %}
+                                <div class="card-body">
+                                    <div class="small text-muted">January 1, 2022</div>
+                                        <h2 class="card-title h4">{{ p.title }}</h2>
+                                        {% if p.hook_text %}
+                                            <h5 class="text-muted">{{ p.hook_text }}</h5> <!-- text_muted는 텍스트를 흐릿하게 함 -->
+                                        {% endif %}
 
-                                    <!--
-                                        | truncatewords:45 → 45개의 단어만 짤라서 보여준다
-                                        | truncatechars:45 → 45개의 글자만 짤라서 보여준다
-                                    -->
-                                    <p class="card-text">{{ p.content | truncatewords:45 }}</p>
-                                    <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
-                            </div>
-                            <div class = "card-footer text-muted">
-                                Posted on {{ p.created_at }} by
-                                <a href="#">작성자명 쓸 위치( 개발 예정 )</a>
-                            </div>
-                    </div>
-                    {% endfor %}
+                                        <!--
+                                            | truncatewords:45 → 45개의 단어만 짤라서 보여준다
+                                            | truncatechars:45 → 45개의 글자만 짤라서 보여준다
+                                        -->
+                                        <p class="card-text">{{ p.content | truncatewords:45 }}</p>
+                                        <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
+                                </div>
+                                <div class = "card-footer text-muted">
+                                    Posted on {{ p.created_at }} by
+                                    <a href="#">작성자명 쓸 위치( 개발 예정 )</a>
+                                </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <h1>아직 게시물이 없습니다</h1>
+                    {% endif %}
                      <!-- Pagination-->
                      <nav aria-label="Pagination">
                         <hr class="my-0" />
