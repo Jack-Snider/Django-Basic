@@ -1,3 +1,9 @@
+<!--
+    Author : Jack Snider
+    post_detail.html
+    post_list.html
+    등 공통코드를 모듈화 하기 위한 베이스파일
+-->
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
@@ -51,7 +57,7 @@
                     </div>
                   </li>
                 </ul>
-                <ul class="navbar-nav ml-auto"> <!--ml-auto : margin-left으로 갈 수 있는 최대로 보낸다. ( mt-auto, mr-auto, mb-auto )-->
+                <ul class="navbar-nav ml-auto"> <!--ml-auto : margin-left로 갈 수 있는 최대로 보낸다. ( mt-auto, mr-auto, mb-auto )-->
                   <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
                   </li>
@@ -92,9 +98,9 @@
 
 
 
-        <div class="container">
-            <div class="row my-3">
-                <div class="col-md-8 col-lg-9" id = "main-area"> <!--md일 때는 8, lg일 때는 9-->
+        <div class="container"> <!-- 총 비율 12 -->
+            <div class="row my-3"> <!-- row로 margin y축으로 비율 3만큼 -->
+                <div class="col-md-8 col-lg-9" id = "main-area"> <!--col이 md일 때는 8, col이 lg일 때는 9-->
                     {% block main_area %} <!-- 다른 파일의 코드를 끼워넣을 공간 ( block은 선언 키워드이고 main_area는 이름 -->
                     {% endblock %}
                 </div>
@@ -113,6 +119,7 @@
                     <!-- Categories widget-->
                     <div class="card mb-4">
                         <div class="card-header">Categories</div>
+                        
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
