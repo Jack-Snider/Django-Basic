@@ -28,73 +28,7 @@
 
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-              <a class="navbar-brand" href="./index.html">Jack Snider</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./blog_list.html">Blog</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./about_me.html">About me</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                      Dropdown link
-                    </a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </li>
-                </ul>
-                <ul class="navbar-nav ml-auto"> <!--ml-auto : margin-left로 갈 수 있는 최대로 보낸다. ( mt-auto, mr-auto, mb-auto )-->
-                  <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-        </nav>
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel"><i class="fa-solid fa-right-to-bracket"></i> Log In</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <button type="button" class="btn btn-dark btn-block btn-sm"><i class="fa-brands fa-google"></i> Log in with Google</button> <!--btn-block : 내용물 상관없이 블록 크기를 일정하게 만듬-->
-                            <button type="button" class="btn btn-dark btn-block btn-sm"><i class="fa-regular fa-user"></i> Log in with username</button>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <button type="button" class="btn btn-dark btn-block btn-sm"><i class="fa-regular fa-envelope"></i> Sign up with E-mail</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                </div>
-            </div>
-            </div>
-        </div>
+       {% include 'blog/navbar.html' %}
 
 
 
@@ -144,10 +78,7 @@
         </div>
         <!--container end-->
 
-         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Do it Django 2023</p></div>
-        </footer>
+        {% include 'blog/footer.html/' %}
 
         <!--bootstrap 4.6x-->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

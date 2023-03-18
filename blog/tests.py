@@ -9,6 +9,29 @@ class TestView( TestCase ):
     def setUp(self):
         self.client = Client() # 웹사이트를 방문하는 사람의 브라우저 정보
 
+    # 보통 TestCase를 상속받으면 그 안의 함수들은 함수이름 앞에 test가 있으면 하나의 unit test로 인식을 한다.
+    # 근데 이건 그냥 함수로만 사용하고자 할 때는 이름앞에 test를 붙히지 않는다.
+    def navbar_test( self, soup ):
+
+        # 1.4 NavBar가 있다.
+        navbar = soup.nav  # navbar라는 변수에 html코드로 가져온 soup변수에 있는 nav태그 저장
+
+        # 1.5 Blog, About me라는 문구가 Navbar에 있다.
+        self.assertIn('Blog', navbar.text)  # 'Blog'라는 문구가 soup의 nav태그의 텍스트로 있어야 한다. ( soup.nav.text로도 가능 ), 이미 navbar변수를 만들었기 때문에 navbar사용할게 그냥
+        self.assertIn('About me', navbar.text)  # 'About me'라는 문구가 soup의 nav태그의 텍스트로 있어야 한다.
+
+        logo_btn = navbar.find( 'a', text = 'Jack Snider' )
+        self.assertEqual( logo_btn.attrs[ 'href' ], '/' ) # logo_btn태그의 속성중에 href이라는 속성이 '/'인걸 찾는다.
+
+        home_btn = navbar.find( 'a', text = 'Home' )
+        self.assertEqual( home_btn.attrs[ 'href' ], '/' )
+
+        blog_btn = navbar.find('a', text='Blog')
+        self.assertEqual( blog_btn.attrs[ 'href' ], '/blog/' )
+
+        about_me_btn = navbar.find('a', text='About me')
+        self.assertEqual( about_me_btn.attrs[ 'href' ], '/about_me/' )
+
     def test_post_list( self ):
 
         # 1.1 포스트 목록 페이지( post list )를 연다
@@ -21,12 +44,7 @@ class TestView( TestCase ):
         soup = BeautifulSoup( response.content, "html.parser" ) # 요청한 결과의 내용물을 가져오는데 그건 html형태이다.
         self.assertIn( 'Blog', soup.title.text ) # 'Blog'라는 문구가 soup의 title태그의 text에 있어야 한다.
 
-        # 1.4 NavBar가 있다.
-        navbar = soup.nav # navbar라는 변수에 html코드로 가져온 soup변수에 있는 nav태그 저장
-
-        # 1.5 Blog, About me라는 문구가 Navbar에 있다.
-        self.assertIn('Blog', navbar.text)  # 'Blog'라는 문구가 soup의 nav태그의 텍스트로 있어야 한다. ( soup.nav.text로도 가능 ), 이미 navbar변수를 만들었기 때문에 navbar사용할게 그냥
-        self.assertIn('About me', navbar.text)  # 'About me'라는 문구가 soup의 nav태그의 텍스트로 있어야 한다.
+        self.navbar_test( soup )
 
         # 2.1 게시물이 하나도 없을 때
         self.assertEqual( Post.objects.count(), 0 ) # Post객체가 0개일 때
@@ -79,10 +97,7 @@ class TestView( TestCase ):
 
         soup = BeautifulSoup( response.content, 'html.parser' )
 
-        # 2.2 포스트 목록 페이지와 똑같은 내비게이션 바가 있다.
-        navbar = soup.nav
-        self.assertIn( 'Blog', navbar.text )
-        self.assertIn( 'About me', navbar.text )
+        self.navbar_test(soup)
 
         # 2.3 첫 번째 포스트의 제목이 웹 브라우저 탭 타이틀에 들어 있다.
         self.assertIn( post_001.title, soup.title.text ) # post_001의 title이 soup.title에 있어야 한다.
