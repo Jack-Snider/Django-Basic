@@ -1,11 +1,13 @@
 from django.db import models
 import os
 # Create your models here.
+
+# You can consider Object( Which is made by Class )
+# can be one table in database
+# like Class == Tabke name
+# feilds == Attribute
 class Post( models.Model ):
-
-    # 장고에서 Model의 필드는 데이터베이스의 속성과 같은 개념이다.
-    # 하나의 모델 객체가 만들어지고 그 안의 필드가 DB안에 하나의 튜플이 되는 개념이다.
-
+    
     title = models.CharField( max_length = 50 ) # 게시물의 제목 , 최대 글자 50자
     hook_text = models.CharField( max_length = 100, blank = True ) # 블로그 내용 요약을 위한 char필드
     content = models.TextField() # 게시물의 내용
@@ -15,7 +17,7 @@ class Post( models.Model ):
         auto_now : 수정 되었을 때 자동으로 현재시간을 반영
     '''
     # blog/images/년/월/일 폴더에 저장 ( _media/blog/images/년/월/일/ 폴더에 저장, blank는 파일이 있어도, 없어도 된다.
-    head_image = models.ImageField( upload_to='blog/images/%Y/%m/%d/', blank=True ) # image파일을 저장하기 위한 필드
+    head_image = models.ImageField( upload_to='blog/images/%Y/%m/%d/', blank=True )
     file_upload = models.FileField( upload_to='blog/files/%Y/%m/%d', blank=True ) # file을 업로드 하기 위한 필드
 
     created_at = models.DateTimeField( auto_now_add = True ) # 작성 시간
