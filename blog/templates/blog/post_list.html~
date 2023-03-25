@@ -1,6 +1,6 @@
 {% extends 'blog/base.html' %}
 
-{% block main_area %}
+{% block %}
 
 <h1>Blog</h1>
 

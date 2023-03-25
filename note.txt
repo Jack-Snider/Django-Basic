@@ -1,3 +1,6 @@
+jack
+9119
+
 장고 install
 	명령어 : pip install django
 
@@ -11,7 +14,7 @@
 	명령어 : python manage.py runserver
 
 가상환경 설정
-	1. File → Porject : 프로젝트 이름 → Python Interpreter
+	1. File → settings → Porject : 프로젝트 이름 → Python Interpreter
 	2. 톱니바퀴 클릭 → Add → OK → Apply → OK
 
 app 생성
