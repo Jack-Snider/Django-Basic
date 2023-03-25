@@ -5,7 +5,8 @@ import os
 # You can consider Object( Which is made by Class )
 # can be one table in database
 # like Class == Tabke name
-# feilds == Attribute
+# fields == Attribute
+# Object -> Post
 class Post( models.Model ):
     
     title = models.CharField( max_length = 50 ) # 게시물의 제목 , 최대 글자 50자
