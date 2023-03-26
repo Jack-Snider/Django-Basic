@@ -1,12 +1,12 @@
 from django.db import models
 import os
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User # 사용자 계정을 위한 장고 라이브러리
 
 # Create your models here.
 
 # You can consider Object( Which is made by Class )
 # can be one table in database
-# like Class == Tabke name
+# like Class == Table name
 # fields == Attribute
 # Object -> Post
 class Post( models.Model ):
@@ -28,7 +28,7 @@ class Post( models.Model ):
     # 사용자
     # User객체가 삭제될 경우 그 객체를 외래키로 참고하고 있는 테이블의 튜플도 함께 삭제
     # null = True → null 허용
-    author = models.ForeignKey( User, on_delete=models.CASCADE )
+    author = models.ForeignKey( User, on_delete = models.CASCADE )
 
 
 
