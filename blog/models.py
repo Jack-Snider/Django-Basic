@@ -8,7 +8,7 @@ from django.contrib.auth.models import User # 사용자 계정을 위한 장고 
 # can be one table in database
 # like Class == Table name
 # fields == Attribute
-# Object -> Post
+# Object -> Post ..
 class Post( models.Model ):
     title = models.CharField(max_length=50)  # 게시물의 제목 , 최대 글자 50자
     hook_text = models.CharField(max_length=100, blank=True)  # 블로그 내용 요약을 위한 char필드
