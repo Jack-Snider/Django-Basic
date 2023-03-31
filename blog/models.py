@@ -27,8 +27,10 @@ class Post( models.Model ):
 
     # 사용자
     # User객체가 삭제될 경우 그 객체를 외래키로 참고하고 있는 테이블의 튜플도 함께 삭제
-    # null = True → null 허용
-    author = models.ForeignKey( User, on_delete = models.CASCADE )
+    # on_delete = models.CASCADE → 해당 유저가 삭제됬을 때 그 유저와 관련된 모든 데이터도 삭제( 예 : 게시글 )
+    # on_delete = models.SET_NULL → 해당 유저가 삭제되도 그 유저와 관련된 데이터의 주인이 None으로 바뀐다. ( 즉, 게시글과 같은 데이터의 소유자가 None으로 변경이 됨 )
+    # null = True → null을 허용하는 옵션
+    author = models.ForeignKey( User, null=True ,on_delete = models.SET_NULL )
 
 
 
